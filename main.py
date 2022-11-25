@@ -1,25 +1,5 @@
-import requests
-
 from config import Config
-
-ENDPOINT_URL = "http://192.168.1.1/jrd/webapi"
-
-
-class RequestsInterface:
-    def __init__(self) -> None:
-        self.requests_body: dict = Config.get_requests_data()
-
-    def requests_data(self) -> dict:
-        return self.requests_body
-
-    @staticmethod
-    def post(data: object) -> dict:
-        response = requests.post(ENDPOINT_URL, json=data)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            raise Exception(f"Error: {response.status_code}")
-
+from src.requests_interface import RequestsInterface
 
 class Information(RequestsInterface):
     def __init__(self) -> None:
