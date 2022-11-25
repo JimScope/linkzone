@@ -28,8 +28,8 @@ class Information(RequestsInterface):
     def get_system_info(self):
         return self.post(data=self.requests_body["Information"]["GetSystemInfo"])
 
-    def get_connection_setting(self):
-        return self.post(data=self.requests_body["Information"]["GetConnectionSetting"])
+    def get_connection_settings(self):
+        return self.post(data=self.requests_body["Information"]["GetConnectionSettings"])
 
     def get_connection_state(self):
         return self.post(data=self.requests_body["Information"]["GetConnectionState"])
