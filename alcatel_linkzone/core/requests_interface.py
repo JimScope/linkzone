@@ -1,8 +1,9 @@
 import requests
 
-from config import Config
+from alcatel_linkzone.common.config import Config
 
 ENDPOINT_URL = "http://192.168.1.1/jrd/webapi"
+
 
 class RequestsInterface:
     def __init__(self) -> None:
