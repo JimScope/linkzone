@@ -130,3 +130,7 @@ dmypy.json
 
 # VSCode
 .vscode
+
+# Don't add freezed dependencies
+requirements.txt
+dev-requirements.txt
