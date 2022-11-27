@@ -1,4 +1,4 @@
-from alcatel_linkzone.core.requests_interface import RequestsInterface
+from linkzone.core.requests_interface import RequestsInterface
 
 
 class Information(RequestsInterface):
