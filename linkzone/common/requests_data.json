@@ -3,25 +3,25 @@
         "GetSystemInfo": {
             "jsonrpc": "2.0",
             "method": "GetSystemInfo",
-            "params": "null",
+            "params": null,
             "id": "13.1"
         },
         "GetConnectionSettings": {
             "jsonrpc": "2.0",
             "method": "GetConnectionSettings",
-            "params": "null",
+            "params": null,
             "id": "3.4"
         },
         "GetConnectionState": {
             "jsonrpc": "2.0",
             "method": "GetConnectionState",
-            "params": "null",
+            "params": null,
             "id": "3.1"
         },
         "GetDeviceNewVersion": {
             "jsonrpc": "2.0",
             "method": "GetDeviceNewVersion",
-            "params": "null",
+            "params": null,
             "id": "9.1"
         }
     },
@@ -31,9 +31,22 @@
             "method": "Login",
             "params": {
                 "UserName": "admin",
-                "Password": "null"
+                "Password": null
             },
             "id": "1.1"
+        }
+    },
+    "SMS": {
+        "SendSMS": {
+            "jsonrpc": "2.0",
+            "method": "SendSMS",
+            "params": {
+                "SMSId": -1,
+                "SMSContent": null,
+                "PhoneNumber": [null],
+                "SMSTime": null
+            },
+            "id": "6.6"
         }
     }
 }

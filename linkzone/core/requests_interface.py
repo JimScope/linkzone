@@ -96,9 +96,9 @@ class RequestsInterface:
 
         return self._parse_response(resp)
 
-    def get(self, data: dict, retries: int = 0):
+    def get(self, data: dict, retries: int = 0) -> dict:
         """
-        Send a POST requests
+        Send a GET requests
 
         :param data: data to send as JSON, dictionary/list to serialize.
         :param method: the HTTP method to use, the default is POST
@@ -106,9 +106,9 @@ class RequestsInterface:
         """
         return self.send(data, "GET", retries)
 
-    def post(self, data: dict, retries: int = 0):
+    def post(self, data: dict, retries: int = 0) -> dict:
         """
-        Send a GET requests
+        Send a POST requests
 
         :param data: data to send as JSON, dictionary/list to serialize.
         :param method: the HTTP method to use, the default is POST
