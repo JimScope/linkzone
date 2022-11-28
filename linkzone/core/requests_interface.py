@@ -8,8 +8,8 @@ from linkzone.common.config import Config
 from linkzone.common.exceptions import (
     InternalTypeError,
     LinkzoneInternalError,
-    ResponseRedirectError,
     ResponseClientError,
+    ResponseRedirectError,
     ResponseServerError,
     UserValueError,
 )

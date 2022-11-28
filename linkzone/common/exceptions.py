@@ -1,6 +1,7 @@
 import functools
 import inspect
 
+
 # Base Error
 class LinkzoneError(Exception):
     """
