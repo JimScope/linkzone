@@ -1,6 +1,7 @@
 import json
 import os
 
+NETWORKS_TYPES = ['NO_SERVICE', '2G', '3G', '3G', '3G+', '4G', '4G+']
 
 class Config(object):
     @staticmethod

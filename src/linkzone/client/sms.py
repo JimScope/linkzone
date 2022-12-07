@@ -29,3 +29,6 @@ class SMS(RequestsInterface):
             return response["error"]["message"]
         else:
             return response
+
+    def read_sms(self) -> dict:
+        raise NotImplementedError
