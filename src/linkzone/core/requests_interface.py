@@ -14,8 +14,6 @@ from linkzone.common.exceptions import (
     UserValueError,
 )
 
-ENDPOINT_URL = "http://192.168.1.1/jrd/webapi"
-
 logger = logging.getLogger(__name__)
 
 
@@ -23,28 +21,25 @@ class RequestsInterface:
     def __init__(self) -> None:
         self.requests_body: dict = Config.get_requests_data()
         self.session = requests.Session()
-        self.timeout = 300.0
+        self.timeout = Config.TIMEOUT_REQUESTS
 
         # exponential backoff settings
-        self.BACKOFF_CONSTANT = 0.1
-        self.BACKOFF_EXPONENT_BASE = 1.5
+        self.BACKOFF_CONSTANT = Config.BACKOFF_CONSTANT
+        self.BACKOFF_EXPONENT_BASE = Config.BACKOFF_EXPONENT_BASE
 
     def _parse_response(self, response: requests.Response) -> dict:
         """Parse response considering its status code
 
         :param response: Response object
         """
-        try:
-            if response.status_code >= 500:
-                raise ResponseServerError(response)
-            elif response.status_code >= 400:
-                raise ResponseClientError(response)
-            elif response.status_code >= 300:
-                raise ResponseRedirectError(response)
-            else:
-                return response.json()
-        except ValueError:
-            raise ValueError
+        if response.status_code >= 500:
+            raise ResponseServerError(response)
+        elif response.status_code >= 400:
+            raise ResponseClientError(response)
+        elif response.status_code >= 300:
+            raise ResponseRedirectError(response)
+        else:
+            return response.json()
 
     def send(self, data: dict, method: str = "GET", retries: int = 0) -> dict:
         """Send an HTTP request
@@ -76,7 +71,7 @@ class RequestsInterface:
             try:
                 logger.debug(f"Sending request: {method}: %s\nData: {data}")
                 resp = self.session.request(
-                    method, ENDPOINT_URL, json=data, timeout=self.timeout
+                    method, Config.ENDPOINT_URL, json=data, timeout=self.timeout
                 )
                 success = True
             except (ResponseServerError, ResponseRedirectError, RequestException) as e:
