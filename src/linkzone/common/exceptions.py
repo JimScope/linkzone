@@ -119,6 +119,14 @@ class ResponseRedirectError(LinkzoneInternalError):
     pass
 
 
+class ResponseParseError(LinkzoneInternalError):
+    """
+    Exception raised when a response cannot be parsed as JSON.
+    """
+
+    pass
+
+
 def linkzone_excepted(message=None):
     """
     Decorator to wrap user-facing Linkzone functions with exception handling that describes to the user whether the error

@@ -1,17 +1,20 @@
 import json
 import os
+from typing import List
+from linkzone.common.data_models import USSDCode
 
-NETWORKS_TYPES = ["NO_SERVICE", "2G", "3G", "3G", "3G+", "4G", "4G+"]
 
+class Config:
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), "config.json")
 
-class Config(object):
-    ENDPOINT_URL = "http://192.168.1.1/jrd/webapi"
-    TIMEOUT_REQUESTS = 300
-    BACKOFF_CONSTANT = 0.1
-    BACKOFF_EXPONENT_BASE = 1.5
+    with open(CONFIG_FILE_PATH, "r") as config_file:
+        config_data = json.load(config_file)
 
-    @staticmethod
-    def get_requests_data():
-        file_path = os.path.join(os.path.dirname(__file__), "requests_data.json")
-        with open(file_path) as file:
-            return json.load(file)
+    ENDPOINT_URL = config_data["ENDPOINT_URL"]
+    TIMEOUT_REQUESTS = config_data["TIMEOUT_REQUESTS"]
+    BACKOFF_CONSTANT = config_data["BACKOFF_CONSTANT"]
+    BACKOFF_EXPONENT_BASE = config_data["BACKOFF_EXPONENT_BASE"]
+    NETWORKS_TYPES = config_data["NETWORKS_TYPES"]
+    USSD_CODES: List[USSDCode] = [
+        USSDCode(**code) for code in config_data["USSD_CODES"]
+    ]
