@@ -29,7 +29,8 @@ class SMS(BaseAPIClient[Dict[str, Any]]):  # Especificar tipo de respuesta
         self._validate_message(message)
         self._prepare_sms_request(phone_numbers, message)
         with self.session_scope():
-            response = self.post(data=self._send_sms_request.__dict__)
+            request_data = self._prepare_request_data(self._send_sms_request)
+            response = self.post(data=request_data)
         return self._handle_response(response)
 
     def _validate_phone_numbers(self, phone_numbers: List[str]) -> None:

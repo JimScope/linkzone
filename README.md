@@ -1,4 +1,4 @@
-# Alcatel LinkZone SDK (early stage)
+# Alcatel LinkZone SDK
 
 ## Installation
 
@@ -34,6 +34,9 @@ pip-compile -o requirements.txt pyproject.toml
 pip-compile --extra dev -o dev-requirements.txt pyproject.toml
 ```
 
+- Optional doc dependencies
+pip-compile --extra docs -o docs-requirements.txt pyproject.toml
+
 - Install dependencies
 
 ``` bash
@@ -42,6 +45,10 @@ pip install -r requirements.txt
 
 ``` bash
 pip install -r dev-requirements.txt
+```
+
+```bash
+pip install -r docs-requirements.txt
 ```
 
 ## Created by
