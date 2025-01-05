@@ -1,5 +1,9 @@
 # Alcatel LinkZone SDK
 
+## Documentation
+
+[https://linkzone.readthedocs.io/](https://linkzone.readthedocs.io/)
+
 ## Installation
 
 ### For development

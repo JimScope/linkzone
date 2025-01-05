@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linkzone"
-version = "0.2.0"
+version = "0.2.1"
 description = "SDK for Alcatel Linkzone modems: MW41NF, MW41CL"
 readme = "README.md"
 authors = [
