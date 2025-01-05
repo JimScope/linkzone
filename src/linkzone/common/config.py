@@ -1,11 +1,20 @@
 import json
 import os
+from typing import List
+from linkzone.common.data_models import USSDCode
 
-NETWORKS_TYPES = ['NO_SERVICE', '2G', '3G', '3G', '3G+', '4G', '4G+']
 
-class Config(object):
-    @staticmethod
-    def get_requests_data():
-        return json.loads(
-            open(os.path.join(os.path.dirname(__file__), "requests_data.json")).read()
-        )
+class Config:
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), "config.json")
+
+    with open(CONFIG_FILE_PATH, "r") as config_file:
+        config_data = json.load(config_file)
+
+    ENDPOINT_URL = config_data["ENDPOINT_URL"]
+    TIMEOUT_REQUESTS = config_data["TIMEOUT_REQUESTS"]
+    BACKOFF_CONSTANT = config_data["BACKOFF_CONSTANT"]
+    BACKOFF_EXPONENT_BASE = config_data["BACKOFF_EXPONENT_BASE"]
+    NETWORKS_TYPES = config_data["NETWORKS_TYPES"]
+    USSD_CODES: List[USSDCode] = [
+        USSDCode(**code) for code in config_data["USSD_CODES"]
+    ]

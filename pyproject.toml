@@ -6,29 +6,29 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linkzone"
-version = "0.1.0"
+version = "0.2.0"
 description = "SDK for Alcatel Linkzone modems: MW41NF, MW41CL"
 readme = "README.md"
 authors = [
-    { name = "Jimmy Angel Pérez Díaz", email = "jimscope@protonmail.com" },
+    { name = "Jimmy Angel Pérez Díaz", email = "jianpedi@gmail.com" },
 ]
 license.file = "LICENSE"
 classifiers = [
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.10",
-    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3.12",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Topic :: Communications :: Internet Phone",
     "Topic :: Internet",
     "Topic :: Software Development :: Libraries"
 ]
-keywords = ["alcatel", "linkzone", "SDK", "ender", "API"]
+keywords = ["alcatel", "linkzone", "SDK", "API", "SMS"]
 requires-python = ">=3.10"
 dependencies = ["requests"]
 
 [project.optional-dependencies]
 dev = ["pytest", "black"]
+docs = ["sphinx", "sphinx-rtd-theme"]
 
 [project.urls]
 Source = "https://github.com/JimScope/linkzone"
